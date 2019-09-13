@@ -11,14 +11,22 @@ export function logout() {
   window.location = '/logout';
 }
 
-export async function loadUser({ ctx }) {
-  let profile;
+export function buildAuthHeaders(ctx) {
   let authHeaders;
   const {token} = cookies(ctx);
   if (token) {
     authHeaders = {
       Authorization: `Bearer ${token}`
     };
+  }
+
+  return authHeaders;
+}
+
+export async function loadUser(ctx) {
+  let profile;
+  const authHeaders = buildAuthHeaders(ctx);
+  if (authHeaders) {
     const {publicRuntimeConfig} = getConfig();
 
     const res = await fetch(`${publicRuntimeConfig.apiBaseUrl}/me`, {

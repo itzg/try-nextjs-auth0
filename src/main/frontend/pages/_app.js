@@ -7,7 +7,7 @@ class MyApp extends App {
   static async getInitialProps(appContext) {
     const appProps = await App.getInitialProps(appContext);
 
-    const user = await loadUser(appContext);
+    const user = await loadUser(appContext.ctx);
 
     return {...appProps, user}
   }
