@@ -2,11 +2,11 @@ import Head from 'next/head'
 import {login, logout, useProfile} from "./UserContext";
 import Link from "next/link";
 
-export default ({children, title = 'Welcome', headerRight}) => {
+export default ({children, title = 'Welcome'}) => {
   const profile = useProfile();
 
   return (
-      <div className="root">
+      <div>
         <Head>
           <title>{title}</title>
           <meta charSet='utf-8'/>
@@ -19,9 +19,9 @@ export default ({children, title = 'Welcome', headerRight}) => {
           </div>
           <div className="login-controls">
             {profile ?
-                  <button onClick={logout}>Logout</button>
+                <button onClick={logout}>Logout</button>
                 :
-                  <button onClick={login}>Login!</button>
+                <button onClick={login}>Login!</button>
             }
           </div>
         </header>
@@ -42,10 +42,6 @@ export default ({children, title = 'Welcome', headerRight}) => {
 
         {/*language=css*/}
         <style jsx>{`
-          .root {
-            font-family: sans-serif;
-          }
-
           header {
             padding: 10px;
             display: flex;
@@ -66,14 +62,18 @@ export default ({children, title = 'Welcome', headerRight}) => {
             flex: 0 0 auto;
           }
           
-          .login-controls button {
-            height: 100%;
+          .title h2 {
+            margin-top: 0;
           }
-          
+
+          .login-controls button {
+            font-size: 1.1em;
+          }
+
           nav {
             margin: 5px 10px;
           }
-          
+
           main {
             margin: 10px;
           }
@@ -82,6 +82,7 @@ export default ({children, title = 'Welcome', headerRight}) => {
         <style global jsx>{`
           body {
             margin: 0;
+            font-family: sans-serif;
           }
         `}</style>
 
