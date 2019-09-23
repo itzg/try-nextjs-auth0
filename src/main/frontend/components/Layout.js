@@ -30,7 +30,6 @@ export default ({children, title = 'Welcome'}) => {
           <Link href="/">
             <a>Home</a>
           </Link>
-          |
           <Link href="/profile">
             <a>Profile</a>
           </Link>
@@ -71,7 +70,12 @@ export default ({children, title = 'Welcome'}) => {
           }
 
           nav {
-            margin: 5px 10px;
+            background-color: #eeeeee;
+            padding: 5px 10px;
+          }
+          
+          nav > a {
+            margin-right: 5px;
           }
 
           main {
