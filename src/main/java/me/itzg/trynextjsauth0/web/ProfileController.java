@@ -23,7 +23,7 @@ public class ProfileController {
           .setPicture(jwt.getClaimAsString("picture"));
     } else {
       throw new IllegalStateException(
-          "Unexpected authentication type: " + authentication.getClass());
+          "Unexpected authentication object: " + authentication);
     }
   }
 }
